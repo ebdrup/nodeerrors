@@ -35,12 +35,12 @@ function handleDocument(err, document){
 }
 ```
 You no longer need to handle the error in the ```handleDocument``` function, it will always be falsy
-(probably `` null```)
+(probably ```null```)
 
 
 Try catch is inserted around the function that has onError called.
 This means that the following code will not result in an uncaught exception. Instead the error will be passed to
-```callback```
+```callback```.
 
 ```js
 return mongo.findOne({}, handleDocument.onError(callback));
@@ -103,17 +103,20 @@ var errors = require("nodeerrors");
 function (err, data){
 	if(err){
 		errorObject = errors.parse(err);
-		//now I have an error with the following properties if it's an 'propertyNotDefined' (from above)
-		{
-			name: propertyNotDefined,
-			code: 2,
-			http: 400,
-			propertyName: someProperty,
-			message: 'The property named "someProperty" should be defined',
-			internal: {
-				stack: ... //callstack of Error
-			}
-		}
+		//...
+	}
+}
+```
+The ```errorObject``` variable will now contain
+```json
+{
+	name: propertyNotDefined,
+	code: 2,
+	http: 400,
+	propertyName: someProperty,
+	message: 'The property named "someProperty" should be defined',
+	internal: {
+		stack: ... //callstack of Error
 	}
 }
 ```
@@ -129,7 +132,10 @@ from above, that took only one parameter, we can do this:
 ```js
 var errors = require("nodeerrors"); //I personally make this a global (once and for all)
 
-callback(errors.propertyNotDefined("someProperty", {notice:"This should NEVER happen"})); //extra internal parameter
+callback(errors.propertyNotDefined(
+	"someProperty",
+	{notice:"This should NEVER happen"} //extra internal parameter
+));
 ```
 This extra parameter will be added to the errors internal parameter. So when we parse the error we will get this:
 
@@ -139,18 +145,21 @@ var errors = require("nodeerrors");
 function (err, data){
 	if(err){
 		errorObject = errors.parse(err);
-		//now I have an error with the following properties if it's an 'propertyNotDefined' (from above)
-		{
-			name: propertyNotDefined,
-			code: 2,
-			http: 400,
-			propertyName: someProperty,
-			message: 'The property named "someProperty" should be defined',
-			internal: {
-				stack: ..., //callstack of Error
-				notice:"This should NEVER happen"
-			}
-		}
+		//...
+	}
+}
+```
+The ```errorObject``` variable will now contain:
+```json
+{
+	name: propertyNotDefined,
+	code: 2,
+	http: 400,
+	propertyName: someProperty,
+	message: 'The property named "someProperty" should be defined',
+	internal: {
+		stack: ..., //callstack of Error
+		notice:"This should NEVER happen"
 	}
 }
 ```
