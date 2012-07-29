@@ -50,7 +50,7 @@ function handleDocument(err, document){
 }
 ```
 
-specifying you own errors
+Specifying you own errors
 -------------------------
 You specify your own error types by adding the file ```.errors.js``` in the root folder of your project or in
 ```config/.errors.js```. Here is an example of a ```.errors.js``` file:
