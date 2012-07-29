@@ -1,0 +1,31 @@
+{
+	"author":"Allan Ebdrup",
+	"name":"nodeerrors",
+	"version":"1.0.0",
+	"repository":{
+		"type":"git",
+		"url":"https://github.com/Muscula/nodeerrors"
+	},
+	"private":false,
+	"main":"./lib/nodeerrors.js",
+	"engines":{
+		"node":">=0.6.20",
+		"npm":">=1.1.9"
+	},
+	"dependencies":{
+		"underscore":"~1.3.1"
+	},
+	"scripts":{
+		"test":"node ./bin/runTests.js",
+		"cov":"node ./bin/runCoverage.js"
+	},
+	"devDependencies":{
+		"mocha":"",
+		"chai":"",
+		"sinon":"",
+		"sinon-chai":"",
+		"jshint":"",
+		"nodecoverage":">=0.6.5",
+		"requiremock": ">=1.3.3"
+	}
+}
