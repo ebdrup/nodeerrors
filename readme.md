@@ -14,7 +14,7 @@ onError
 Instead of writing
 
 ```js
-return mongo.findOne({}, handleDocument);
+return mongoCollection.findOne({}, handleDocument);
 
 function handleDocument(err, document){
 	if(err){
@@ -28,7 +28,7 @@ function handleDocument(err, document){
 After you require ```nodeerror``` anywhere (Function.prototype has been extended), you can write:
 
 ```js
-return mongo.findOne({}, handleDocument.onError(callback));
+return mongoCollection.findOne({}, handleDocument.onError(callback));
 
 function handleDocument(err, document){
     //...
@@ -43,7 +43,7 @@ This means that the following code will not result in an uncaught exception. Ins
 ```callback```.
 
 ```js
-return mongo.findOne({}, handleDocument.onError(callback));
+return mongoCollection.findOne({}, handleDocument.onError(callback));
 
 function handleDocument(err, document){
     throw new Error("some error");
