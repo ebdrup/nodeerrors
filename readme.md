@@ -110,17 +110,17 @@ function (err, data){
 The ```errorObject``` variable will now contain
 ```json
 {
-	name: propertyNotDefined,
-	code: 2,
-	http: 400,
-	propertyName: someProperty,
-	message: 'The property named "someProperty" should be defined',
-	internal: {
-		stack: ... //callstack of Error
+	"name": propertyNotDefined,
+	"code": 2,
+	"http": 400,
+	"propertyName": someProperty,
+	"message": 'The property named "someProperty" should be defined',
+	"internal": {
+		"stack": "[call stack of Error]"
 	}
 }
 ```
- Notice that the callstack is on the property ```internal```. This property is meant for everything we **never** want an
+ Notice that the call stack is on the property ```internal```. This property is meant for everything we **never** want an
   end-user to see, but it's still information we want to possibly log for debugging purposes.
 
 Note that you can parse any error, also errors passed to you from third party libraries.
@@ -152,14 +152,14 @@ function (err, data){
 The ```errorObject``` variable will now contain:
 ```json
 {
-	name: propertyNotDefined,
-	code: 2,
-	http: 400,
-	propertyName: someProperty,
-	message: 'The property named "someProperty" should be defined',
-	internal: {
-		stack: ..., //callstack of Error
-		notice:"This should NEVER happen"
+	"name": propertyNotDefined,
+	"code": 2,
+	"http": 400,
+	"propertyName": someProperty,
+	"message": 'The property named "someProperty" should be defined',
+	"internal": {
+		"stack": "[call stack of Error]"
+		"notice":"This should NEVER happen"
 	}
 }
 ```
