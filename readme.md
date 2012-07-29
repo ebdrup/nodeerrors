@@ -110,11 +110,11 @@ function (err, data){
 The ```errorObject``` variable will now contain
 ```json
 {
-	"name": propertyNotDefined,
+	"name": "propertyNotDefined",
 	"code": 2,
 	"http": 400,
-	"propertyName": someProperty,
-	"message": 'The property named "someProperty" should be defined',
+	"propertyName": "someProperty",
+	"message": "The property named \"someProperty\" should be defined",
 	"internal": {
 		"stack": "[call stack of Error]"
 	}
@@ -152,11 +152,11 @@ function (err, data){
 The ```errorObject``` variable will now contain:
 ```json
 {
-	"name": propertyNotDefined,
+	"name": "propertyNotDefined",
 	"code": 2,
 	"http": 400,
-	"propertyName": someProperty,
-	"message": 'The property named "someProperty" should be defined',
+	"propertyName": "someProperty",
+	"message": "The property named \"someProperty\" should be defined",
 	"internal": {
 		"stack": "[call stack of Error]"
 		"notice":"This should NEVER happen"
