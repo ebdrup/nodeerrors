@@ -40,7 +40,7 @@ You no longer need to handle the error in the ```handleDocument``` function, it 
 
 Try catch is inserted around the function that has onError called.
 This means that the following code will not result in an uncaught exception. Instead the error will be passed to
-```callback```.
+```callback```, for error handling.
 
 ```js
 return mongoCollection.findOne({}, handleDocument.onError(callback));
