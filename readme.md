@@ -34,6 +34,7 @@ function handleDocument(err, document){
     //...
 }
 ```
+If ```findOne``` returns an error, it will automatically be sent to ```callback```.
 You no longer need to handle the error in the ```handleDocument``` function, it will always be falsy
 (probably ```null```)
 
@@ -120,8 +121,9 @@ The ```errorObject``` variable will now contain
 	}
 }
 ```
- Notice that the call stack is on the property ```internal```. This property is meant for everything we **never** want an
-  end-user to see, but it's still information we want to possibly log for debugging purposes.
+ Notice that the call stack is on the property ```internal```. The ```internal``` property is meant for everything
+ that we **never** want an
+  end-user to see, but it's still information we want to log for debugging purposes.
 
 Note that you can parse any error, also errors passed to you from third party libraries.
 
