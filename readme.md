@@ -139,7 +139,7 @@ callback(errors.propertyNotDefined(
 	{notice:"This should NEVER happen"} //extra internal parameter
 ));
 ```
-This extra parameter will be added to the errors internal parameter. So when we parse the error we will get this:
+This extra parameter will be added to the errors internal parameter. So when we parse the error:
 
 ```js
 var errors = require("nodeerrors");
