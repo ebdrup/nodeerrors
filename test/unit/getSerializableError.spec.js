@@ -15,4 +15,16 @@ describe("when passed an error", function () {
 		expect(serialized.stack).to.be.ok;
 		expect(error).to.eql(serialized);
 	});
+	it('will make only copy properties that can be JSON.serialized', function () {
+		var getSerialiazableError = require("../../lib/util/getSerializableError");
+		var sourceError = new Error("This is my error");
+		//create circular reference
+		var o= { circle : {}};
+		o.circle = o;
+		sourceError.test = o;
+		var error = getSerialiazableError(sourceError);
+		var serialized = JSON.parse(JSON.stringify(error));
+		expect(serialized.stack).to.be.ok;
+		expect(error).to.eql(serialized);
+	});
 });
