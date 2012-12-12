@@ -59,13 +59,13 @@ You specify your own error types by adding the file ```.errors.js``` in the root
 ```js
 module.exports = {
 	"notUnique":{
-		code:1,
+		code:2,
 		message:"The property \"%s\" is not unique. The value \"%s\" already exists.",
 		args:["propertyName", "propertyValue"],
 		http:400
 	},
 	"propertyNotDefined":{
-		code:2,
+		code:3,
 		message:"The property named \"%s\" should be defined",
 		args:["propertyName"],
 		http:400
@@ -95,9 +95,11 @@ Notice that ```propertyNotDefined``` only takes a single argument, because there
 ```args```. You can even leave out ```args``` altogether, if your error does not take arguments.
 
 
-Retrieveing information from error passed
+Parsing errors
 -----------------------------------------
-If you are passed an error in your own callback, you can retrieve the information of the error by parsing it like this:
+When you want an error to JSON.stringify-able (handle cyclic references), you should parse it with the ```parse```
+function.
+If you are passed an error in your own callback, you can parse it like this:
 ```js
 var errors = require("nodeerrors");
 
@@ -109,23 +111,27 @@ function (err, data){
 }
 ```
 The ```errorObject``` variable will now contain
-```json
+```javascript
 {
 	"name": "propertyNotDefined",
-	"code": 2,
+	"code": 3,
 	"http": 400,
 	"propertyName": "someProperty",
 	"message": "The property named \"someProperty\" should be defined",
+	"stack": "[call stack of Error]"
+	"id": "1cbf5dab-4630-4d09-b779-2c721e571859"
 	"internal": {
-		"stack": "[call stack of Error]"
+		//...
 	}
 }
 ```
- Notice that the call stack is on the property ```internal```. The ```internal``` property is meant for everything
- that we **never** want an
-  end-user to see, but it's still information we want to log for debugging purposes.
 
 Note that you can parse any error, also errors passed to you from third party libraries.
+Errors from third party libraries are wrapped in a ```system``` error, and the original error will be in
+```internal.innerError```
+
+Also note that each when parsing an error it will be given a uuid in the property ```id```, you can use this when
+ you log the error and want to look up a specific error.
 
 Adding extra internal values
 ----------------------------
@@ -146,21 +152,20 @@ var errors = require("nodeerrors");
 
 function (err, data){
 	if(err){
-		errorObject = errors.parse(err);
 		//...
 	}
 }
 ```
-The ```errorObject``` variable will now contain:
+The ```err``` variable will now contain:
 ```json
 {
 	"name": "propertyNotDefined",
-	"code": 2,
+	"code": 3,
 	"http": 400,
 	"propertyName": "someProperty",
 	"message": "The property named \"someProperty\" should be defined",
+	"stack": "[call stack of Error]"
 	"internal": {
-		"stack": "[call stack of Error]"
 		"notice":"This should NEVER happen"
 	}
 }
@@ -179,8 +184,7 @@ var errorCodes = errors.errorCodes;
 
 function handleDocument(err, document){
 	if(err){
- 		errorObject = errors.parse(err);
- 		if(errorObject.code = errorCodes.fileNotFound){
+		if(err.code = errorCodes.fileNotFound){
  			return callback(errors.mySpecialError().innerError(err));
  		}
  		return callback(err);

@@ -35,8 +35,7 @@ describe("When making an error function", function () {
 				message:"There was an internal server error"
 			};
 			var fn = makeErrorFunction("system", errorCodeSpec);
-			var error = fn();
-			var errorObject = JSON.parse(error.message);
+			var errorObject = fn();
 			expect(errorObject.name).to.equal("system");
 			expect(errorObject.code).to.equal(errorCodeSpec.code);
 			expect(errorObject.message).to.equal(errorCodeSpec.message);
@@ -49,8 +48,7 @@ describe("When making an error function", function () {
 				http: 123456
 			};
 			var fn = makeErrorFunction("system", errorCodeSpec);
-			var error = fn();
-			var errorObject = JSON.parse(error.message);
+			var errorObject = fn();
 			expect(errorObject.http).to.equal(123456);
 		});
 
@@ -60,9 +58,8 @@ describe("When making an error function", function () {
 				code:999,
 				message:"There was an internal server error"
 			};
-			var fn = makeErrorFunction("system", errorCodeSpec);
-			var error = fn(internalData);
-			var errorObject = JSON.parse(error.message);
+			var fn = makeErrorFunction("test", errorCodeSpec);
+			var errorObject = fn(internalData);
 			expect(errorObject.internal).to.eql(internalData);
 		});
 	});
@@ -76,8 +73,7 @@ describe("When making an error function", function () {
 				args:["myParameter"]
 			};
 			var fn = makeErrorFunction("test", errorCodeSpec);
-			var error = fn("testParameterValue");
-			var errorObject = JSON.parse(error.message);
+			var errorObject = fn("testParameterValue");
 			expect(errorObject.message).to.equal("error testParameterValue");
 		});
 
@@ -88,8 +84,7 @@ describe("When making an error function", function () {
 				args:["myParameter1", "myParameter2"]
 			};
 			var fn = makeErrorFunction("test", errorCodeSpec);
-			var error = fn("testParameterValue1", "testParameterValue2");
-			var errorObject = JSON.parse(error.message);
+			var errorObject = fn("testParameterValue1", "testParameterValue2");
 			expect(errorObject.message).to.equal("error testParameterValue1, testParameterValue2");
 		});
 
@@ -100,8 +95,7 @@ describe("When making an error function", function () {
 				args:["myParameter"]
 			};
 			var fn = makeErrorFunction("test", errorCodeSpec);
-			var error = fn("testParameterValue");
-			var errorObject = JSON.parse(error.message);
+			var errorObject = fn("testParameterValue");
 			expect(errorObject.myParameter).to.equal("testParameterValue");
 		});
 
@@ -113,8 +107,7 @@ describe("When making an error function", function () {
 				args:["myParameter"]
 			};
 			var fn = makeErrorFunction("test", errorCodeSpec);
-			var error = fn(data);
-			var errorObject = JSON.parse(error.message);
+			var errorObject = fn(data);
 			expect(errorObject.myParameter).to.eql(data);
 		});
 
@@ -126,8 +119,7 @@ describe("When making an error function", function () {
 				args:["myParameter"]
 			};
 			var fn = makeErrorFunction("test", errorCodeSpec);
-			var error = fn("test", data);
-			var errorObject = JSON.parse(error.message);
+			var errorObject = fn("test", data);
 			expect(errorObject.internal).to.eql(data);
 		});
 	});
