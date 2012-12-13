@@ -29,7 +29,7 @@ describe("When making an error function", function () {
 			expect(error.stack).to.be.ok;
 		});
 
-		it("will give it the correct name, code and message", function () {
+		it("will give it the correct name, code, id and message", function () {
 			var errorCodeSpec = {
 				code:999,
 				message:"There was an internal server error"
@@ -37,6 +37,7 @@ describe("When making an error function", function () {
 			var fn = makeErrorFunction("system", errorCodeSpec);
 			var errorObject = fn();
 			expect(errorObject.name).to.equal("system");
+			expect(errorObject.id).to.be.a("string");
 			expect(errorObject.code).to.equal(errorCodeSpec.code);
 			expect(errorObject.message).to.equal(errorCodeSpec.message);
 		});
@@ -75,6 +76,19 @@ describe("When making an error function", function () {
 			var fn = makeErrorFunction("test", errorCodeSpec);
 			var errorObject = fn("testParameterValue");
 			expect(errorObject.message).to.equal("error testParameterValue");
+		});
+
+		it("will format the message with one argument and an internal parameter", function () {
+			var internalData = { test:true, myArray: [1,2,3]};
+			var errorCodeSpec = {
+				code:999,
+				message:"error %s",
+				args:["myParameter"]
+			};
+			var fn = makeErrorFunction("test", errorCodeSpec);
+			var errorObject = fn("testParameterValue", internalData);
+			expect(errorObject.message).to.equal("error testParameterValue");
+			expect(errorObject.internal).to.eql(internalData);
 		});
 
 		it("will format the message with two arguments", function () {

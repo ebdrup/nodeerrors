@@ -128,10 +128,10 @@ The ```errorObject``` variable will now contain
 
 Note that you can parse any error, also errors passed to you from third party libraries.
 Errors from third party libraries are wrapped in a ```system``` error, and the original error will be in
-```internal.innerError```
+```internal.innerError```.
 
-Also note that each when parsing an error it will be given a uuid in the property ```id```, you can use this when
- you log the error and want to look up a specific error.
+Also note that each when parsing an error it will be given a uuid in the property ```id``` (if it does not already have one)
+, you can use this when you log the error and want to look up a specific error.
 
 Adding extra internal values
 ----------------------------
@@ -165,6 +165,7 @@ The ```err``` variable will now contain:
 	"propertyName": "someProperty",
 	"message": "The property named \"someProperty\" should be defined",
 	"stack": "[call stack of Error]"
+	"id": "1cbf5dab-4630-4d09-b779-2c721e571859"
 	"internal": {
 		"notice":"This should NEVER happen"
 	}
