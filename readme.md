@@ -9,48 +9,6 @@ Installation
 npm install nodeerrors
 ```
 
-onError
--------
-Instead of writing
-
-```js
-return mongoCollection.findOne({}, handleDocument);
-
-function handleDocument(err, document){
-	if(err){
-    	return callback(err);
-	}
-    //...
-}
-```
-
-
-After you require ```nodeerror``` anywhere (Function.prototype has been extended), you can write:
-
-```js
-return mongoCollection.findOne({}, handleDocument.onError(callback));
-
-function handleDocument(err, document){
-    //...
-}
-```
-If ```findOne``` returns an error, it will automatically be sent to ```callback```.
-You no longer need to handle the error in the ```handleDocument``` function, it will always be falsy
-(probably ```null```)
-
-
-Try catch is inserted around the function that has onError called.
-This means that the following code will not result in an uncaught exception. Instead the error will be passed to
-```callback```, for error handling.
-
-```js
-return mongoCollection.findOne({}, handleDocument.onError(callback));
-
-function handleDocument(err, document){
-    throw new Error("some error");
-}
-```
-
 Specifying you own errors
 -------------------------
 You specify your own error types by adding the file ```.errors.js``` in the root folder of your project or in
@@ -58,6 +16,11 @@ You specify your own error types by adding the file ```.errors.js``` in the root
 
 ```js
 module.exports = {
+	"system":{
+		code:1,
+		message:"Internal server error",
+		http:500
+	},
 	"notUnique":{
 		code:2,
 		message:"The property \"%s\" is not unique. The value \"%s\" already exists.",
@@ -99,7 +62,14 @@ Parsing errors
 -----------------------------------------
 When you want an error to JSON.stringify-able (handle cyclic references), you should parse it with the ```parse```
 function.
+
+# The `parse` function is useful when you want to log the error to a service like loggly.com or similar.
+# The `parse` function is useful if you want to return an error message to the client from an API. If you parse the error and
+remove the properties `stack` and `internal` everything else should be safe to send to the client. You can also remove
+the property `http` and use it for a http status code in your response.
+
 If you are passed an error in your own callback, you can parse it like this:
+
 ```js
 var errors = require("nodeerrors");
 
@@ -118,8 +88,8 @@ The ```errorObject``` variable will now contain
 	"http": 400,
 	"propertyName": "someProperty",
 	"message": "The property named \"someProperty\" should be defined",
-	"stack": "[call stack of Error]"
-	"id": "1cbf5dab-4630-4d09-b779-2c721e571859"
+	"stack": "[call stack of Error]",
+	"id": "1cbf5dab-4630-4d09-b779-2c721e571859",
 	"internal": {
 		//...
 	}
@@ -194,6 +164,48 @@ function handleDocument(err, document){
 ```
 
 This returns a ```mySpecialError``` with the ```fileNotFound``` error as an inner error.
+
+onError
+-------
+Instead of writing
+
+```js
+return mongoCollection.findOne({}, handleDocument);
+
+function handleDocument(err, document){
+	if(err){
+    	return callback(err);
+	}
+    //...
+}
+```
+
+
+After you require ```nodeerrors``` anywhere (Function.prototype has been extended), you can write:
+
+```js
+return mongoCollection.findOne({}, handleDocument.onError(callback));
+
+function handleDocument(err, document){
+    //...
+}
+```
+If ```findOne``` returns an error, it will automatically be sent to ```callback```.
+You no longer need to handle the error in the ```handleDocument``` function, it will always be falsy
+(probably ```null```)
+
+
+Try catch is inserted around the function that has onError called.
+This means that the following code will not result in an uncaught exception. Instead the error will be passed to
+```callback```, for error handling.
+
+```js
+return mongoCollection.findOne({}, handleDocument.onError(callback));
+
+function handleDocument(err, document){
+    throw new Error("some error");
+}
+```
 
 Express compatible error handling middleware
 --------------------------------------------
