@@ -6,7 +6,7 @@ who use function hoisting most of the time to avoid some of the so-called "callb
 Installation
 ------------
 ```
-npm install nodeerror
+npm install nodeerrors
 ```
 
 onError
