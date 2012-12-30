@@ -127,8 +127,8 @@ The ```errorObject``` variable will now contain
 ```
 
 Note that you can parse any error, also errors passed to you from third party libraries.
-Errors from third party libraries are wrapped in a ```system``` error, and the original error will be in
-```internal.innerError```.
+Errors from third party libraries are wrapped in a ```system``` error, and the original error will be
+in ```internal.innerError```.
 
 Also note that each when parsing an error it will be given a uuid in the property ```id``` (if it does not already have one)
 , you can use this when you log the error and want to look up a specific error.
