@@ -63,8 +63,8 @@ Parsing errors
 When you want an error to JSON.stringify-able (handle cyclic references), you should parse it with the ```parse```
 function.
 
-# The `parse` function is useful when you want to log the error to a service like loggly.com or similar.
-# The `parse` function is useful if you want to return an error message to the client from an API. If you parse the error and
+- The `parse` function is useful when you want to log the error to a service like loggly.com or similar.
+- The `parse` function is useful if you want to return an error message to the client from an API. If you parse the error and
 remove the properties `stack` and `internal` everything else should be safe to send to the client. You can also remove
 the property `http` and use it for a http status code in your response.
 
