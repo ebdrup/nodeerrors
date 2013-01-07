@@ -100,7 +100,7 @@ Note that you can parse any error, also errors passed to you from third party li
 Errors from third party libraries are wrapped in a ```system``` error, and the original error will be
 in ```internal.innerError```. This is done, in order not to pass sensitive internal error information to the client.
 After you `parse` an error, all you need to do is remove the `stack` and `internal` properties, everything else should
-be safe to send to the client.
+ be safe to send to the client.
 
 Also note that each when parsing an error it will be given a uuid in the property ```id``` (if it does not already have
 a `id`-property). You can use this when you log the error and want to look up a specific error.

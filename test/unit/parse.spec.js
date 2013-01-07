@@ -34,7 +34,7 @@ describe("When parsing an error", function () {
 		expect(result.internal.innerError).to.be.ok;
 		expect(result.internal.innerError.message).to.equal("my test");
 		expect(result.internal.innerError.stack).to.be.ok;
-		expect(result.internal.innerError.cyclic).to.equal("[cyclic]");
+		expect(result.internal.innerError.cyclic).to.equal("[cyclic or too complex]");
 	});
 
 	it("will handle cyclic property in error, not return nodeErrors-property, and not overwrite id", function () {
@@ -52,7 +52,7 @@ describe("When parsing an error", function () {
 		expect(result.code).to.equal(999);
 		expect(result.message).to.equal("Test");
 		expect(result.http).to.equal(123456);
-		expect(result.cyclic).to.equal("[cyclic]");
+		expect(result.cyclic).to.equal("[cyclic or too complex]");
 		expect(result.id).to.equal(errorId);
 		expect(result.internal).to.not.have.property("nodeErrors");
 	});
