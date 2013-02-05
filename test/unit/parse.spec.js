@@ -15,7 +15,7 @@ describe("When parsing an error", function () {
 	it("will wrap a normal exception in a system error", function () {
 		var result = parse(new Error("my test"));
 		expect(result).to.have.property("id").to.be.a("string");
-		expect(result.code).to.equal(1);
+		expect(result.name).to.equal("system");
 		expect(result.message).to.equal("There was an internal server error");
 		expect(result.http).to.equal(500);
 		expect(result.internal.innerError).to.be.ok;
@@ -28,7 +28,7 @@ describe("When parsing an error", function () {
 		err.cyclic = getCyclicObject();
 		var result = parse(err);
 		expect(result).to.have.property("id").to.be.a("string");
-		expect(result.code).to.equal(1);
+		expect(result.name).to.equal("system");
 		expect(result.message).to.equal("There was an internal server error");
 		expect(result.http).to.equal(500);
 		expect(result.internal.innerError).to.be.ok;
@@ -39,7 +39,6 @@ describe("When parsing an error", function () {
 
 	it("will handle cyclic property in error, not return nodeErrors-property, and not overwrite id", function () {
 		var errorCodeSpec = {
-			code:999,
 			message:"Test",
 			http:123456,
 			cyclic:getCyclicObject()
@@ -49,7 +48,7 @@ describe("When parsing an error", function () {
 		var errorId = err.id;
 		var result = parse(err);
 		expect(result).to.have.property("id").to.be.a("string");
-		expect(result.code).to.equal(999);
+		expect(result.name).to.equal("test");
 		expect(result.message).to.equal("Test");
 		expect(result.http).to.equal(123456);
 		expect(result.cyclic).to.equal("[cyclic or too complex]");
