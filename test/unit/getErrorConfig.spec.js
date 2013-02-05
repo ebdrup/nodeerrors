@@ -6,7 +6,6 @@ describe("when fetching config file", function () {
 		var result = require("../../lib/util/getErrorConfig");
 		expect(result).to.eql({
 			system:{
-				code:1,
 				message:'There was an internal server error',
 				http:500
 			}
@@ -29,7 +28,6 @@ describe("when fetching config file", function () {
 
 		var expectedResult = JSON.parse(JSON.stringify(errorsMock));
 		_(expectedResult).extend({system:{
-			code:1,
 			message:'There was an internal server error',
 			http:500 }
 		});
@@ -52,7 +50,6 @@ describe("when fetching config file", function () {
 		var result = requireMock("../../lib/util/getErrorConfig");
 
 		expect(result.system).to.eql({
-			code:1,
 			message:"There was an internal server error",
 			http:500
 		});
