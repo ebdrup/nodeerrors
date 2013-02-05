@@ -17,18 +17,15 @@ You specify your own error types by adding the file ```.errors.js``` in the root
 ```js
 module.exports = {
 	"system":{
-		code:1,
 		message:"Internal server error",
 		http:500
 	},
 	"notUnique":{
-		code:2,
 		message:"The property \"%s\" is not unique. The value \"%s\" already exists.",
 		args:["propertyName", "propertyValue"],
 		http:400
 	},
 	"propertyNotDefined":{
-		code:3,
 		message:"The property named \"%s\" should be defined",
 		args:["propertyName"],
 		http:400
@@ -84,7 +81,6 @@ The ```errorObject``` variable will now contain
 ```javascript
 {
 	"name": "propertyNotDefined",
-	"code": 3,
 	"http": 400,
 	"propertyName": "someProperty",
 	"message": "The property named \"someProperty\" should be defined",
@@ -132,7 +128,6 @@ The ```err``` variable will now contain:
 ```json
 {
 	"name": "propertyNotDefined",
-	"code": 3,
 	"http": 400,
 	"propertyName": "someProperty",
 	"message": "The property named \"someProperty\" should be defined",
@@ -157,7 +152,7 @@ var errorCodes = errors.errorCodes;
 
 function handleDocument(err, document){
 	if(err){
-		if(err.code = errorCodes.fileNotFound){
+		if(err.name = errorCodes.fileNotFound){
  			return callback(errors.mySpecialError().innerError(err));
  		}
  		return callback(err);

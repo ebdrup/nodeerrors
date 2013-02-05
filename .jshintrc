@@ -39,5 +39,6 @@
     "noarg" : true,
     "trailing" : true,
     "asi" : false,
-    "expr": true
+    "expr": true,
+    "es5": true
 }

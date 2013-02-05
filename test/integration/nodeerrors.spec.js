@@ -27,6 +27,9 @@ describe("nodeerrors", function () {
 		expect(nodeerrors.system).to.be.a("function");
 		expect(nodeerrors.notUnique).to.be.a("function");
 		expect(nodeerrors.propertyNotDefined).to.be.a("function");
-		expect(nodeerrors.errorCodes).to.be.eql({ notUnique: 2, propertyNotDefined: 3, system: 1 });
+		expect(nodeerrors.errorCodes).to.be.eql({
+			notUnique: "notUnique",
+			propertyNotDefined: "propertyNotDefined",
+			system: "system" });
 	});
 });
