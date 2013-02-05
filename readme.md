@@ -9,6 +9,14 @@ Installation
 npm install nodeerrors
 ```
 
+NOTE: Not for use in modules
+----------------------------
+The way the pars function works, and the way the .errors configuration is read, means you should not use the 
+nodeerros module in node modules. For now only use it in your main application.
+
+Support for use in modules is on the to-do list.
+
+
 Specifying you own errors
 -------------------------
 You specify your own error types by adding the file ```.errors.js``` in the root folder of your project or in
