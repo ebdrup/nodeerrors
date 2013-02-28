@@ -33,13 +33,13 @@ describe("When making an error function", function () {
 			expect(error.stack).to.be.ok;
 		});
 
-		it("will give it the correct name, id and message", function () {
+		it("will give it the correct code, id and message", function () {
 			var errorCodeSpec = {
 				message:"There was an internal server error"
 			};
 			var fn = makeErrorFunction("system", errorCodeSpec);
 			var errorObject = fn();
-			expect(errorObject.name).to.equal("system");
+			expect(errorObject.code).to.equal("system");
 			expect(errorObject.id).to.be.a("string");
 			expect(errorObject.message).to.equal(errorCodeSpec.message);
 		});
