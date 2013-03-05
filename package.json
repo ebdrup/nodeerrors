@@ -2,7 +2,7 @@
   "author": "Allan Ebdrup",
   "name": "nodeerrors",
   "description": "error handling module for node",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/Muscula/nodeerrors"
@@ -30,9 +30,6 @@
   },
   "readmeFilename": "readme.md",
   "gitHead": "985c718ebf69fc91205c6c40d0a46ce49c717f2b",
-  "bin": {
-    "nodeerrors": "runTests.js"
-  },
   "directories": {
     "test": "test"
   },
@@ -40,5 +37,5 @@
     "error",
     "handling"
   ],
-  "license": "APACHE 2.0"
+  "license": "APACHE V2.0"
 }
