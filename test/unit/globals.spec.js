@@ -9,10 +9,6 @@ describe("When running tests", function () {
 		expect(expect).to.be.ok;
 	});
 
-	it("should have requireMockFactory defined", function () {
-		expect(requireMockFactory).to.be.a("function");
-	});
-
 	it("should have underscore defined", function () {
 		expect(_).to.be.ok;
 	});
