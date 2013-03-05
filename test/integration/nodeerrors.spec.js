@@ -8,28 +8,61 @@ describe("nodeerrors", function () {
 
 
 	it("should have the errors and errorCodes defined in .errors.js configuration", function () {
-		//first we get a mock of reading the config file
-		var requireMock = requireMockFactory(__filename);
-		var errorsMock = require("../mocks/.errors.js");
-		requireMock.mock("fs", {
-			existsSync:function () {
-				return true;
-			}
-		});
-		requireMock.mock("*.errors.js", errorsMock);
-		var errorConfigMock = requireMock("../../lib/util/getErrorConfig");
-		//then we use that mock to load nodeerrors
-		requireMock = requireMockFactory(__filename);
-		requireMock.mock("*getErrorConfig*", errorConfigMock);
-
-		var nodeerrors = requireMock("../../lib/nodeerrors.js");
-
+		var nodeerrors = require("../../lib/nodeerrors.js");
 		expect(nodeerrors.system).to.be.a("function");
 		expect(nodeerrors.notUnique).to.be.a("function");
 		expect(nodeerrors.propertyNotDefined).to.be.a("function");
 		expect(nodeerrors.errorCodes).to.be.eql({
 			notUnique: "notUnique",
 			propertyNotDefined: "propertyNotDefined",
+			integration: "integration",
 			system: "system" });
 	});
+
+	describe("having required nodeerrors in test1 dir", function () {
+		var nodeerrors1;
+		before(function () {
+			nodeerrors1 = require("./dirCacheTest/test1/requireNodeErrors");
+		});
+
+		it("will have the test1 schema", function () {
+			expect(nodeerrors1).to.have.property("test1");
+		});
+
+		describe("requiring it again ()", function(){
+			var nodeerrors2;
+			before(function(){
+				//requireSchemagic is not cached in require cache
+				nodeerrors2 = require("./dirCacheTest/test1/requireNodeErrors");
+			});
+
+			it("will be the same instance", function () {
+				expect(nodeerrors2).to.equal(nodeerrors1);
+			});
+
+		});
+	});
+	describe("having required schemagic in test2 dir", function () {
+		var nodeerrors1;
+		before(function () {
+			nodeerrors1 = require("./dirCacheTest/test2/requireNodeErrors");
+		});
+
+		it("will have the test2 schema", function () {
+			expect(nodeerrors1).to.have.property("test2");
+		});
+
+		describe("requiring it from subdir", function(){
+			var nodeerrors2;
+			before(function(){
+				nodeerrors2 = require("./dirCacheTest/test2/test2subdir/requireNodeErrors");
+			});
+
+			it("will be the same instance", function () {
+				expect(nodeerrors2).to.equal(nodeerrors1);
+			});
+
+		});
+	});
+	
 });

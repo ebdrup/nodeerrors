@@ -9,11 +9,12 @@ function getCyclicObject() {
 
 describe("When parsing an error", function () {
 
+	var nodeerrors = require("../../lib/nodeerrors.js");
 	var parse = require("../../lib/util/parse");
 	var makeErrorFunction = require("../../lib/util/makeErrorFunction");
 
 	it("will wrap a normal exception in a system error", function () {
-		var result = parse(new Error("my test"));
+		var result = parse.call(nodeerrors, new Error("my test"));
 		expect(result).to.have.property("id").to.be.a("string");
 		expect(result.code).to.equal("system");
 		expect(result.message).to.equal("There was an internal server error");
@@ -26,7 +27,7 @@ describe("When parsing an error", function () {
 	it("will handle a cyclic property in innerError", function () {
 		var err = new Error("my test");
 		err.cyclic = getCyclicObject();
-		var result = parse(err);
+		var result = parse.call(nodeerrors, err);
 		expect(result).to.have.property("id").to.be.a("string");
 		expect(result.code).to.equal("system");
 		expect(result.message).to.equal("There was an internal server error");
@@ -46,7 +47,7 @@ describe("When parsing an error", function () {
 		var fn = makeErrorFunction("test", errorCodeSpec);
 		var err = fn();
 		var errorId = err.id;
-		var result = parse(err);
+		var result = parse.call(nodeerrors, err);
 		expect(result).to.have.property("id").to.be.a("string");
 		expect(result.code).to.equal("test");
 		expect(result.message).to.equal("Test");

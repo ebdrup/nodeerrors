@@ -9,14 +9,6 @@ Installation
 npm install nodeerrors
 ```
 
-NOTE: Not for use in modules
-----------------------------
-The way the pars function works, and the way the .errors configuration is read, means you should not use the 
-nodeerros module in node modules. For now only use it in your main application.
-
-Support for use in modules is on the to-do list.
-
-
 Specifying you own errors
 -------------------------
 You specify your own error types by adding the file ```.errors.js``` in the root folder of your project or in
@@ -88,7 +80,7 @@ function (err, data){
 The ```errorObject``` variable will now contain
 ```javascript
 {
-	"name": "propertyNotDefined",
+	"code": "propertyNotDefined",
 	"http": 400,
 	"propertyName": "someProperty",
 	"message": "The property named \"someProperty\" should be defined",
@@ -135,7 +127,7 @@ function (err, data){
 The ```err``` variable will now contain:
 ```json
 {
-	"name": "propertyNotDefined",
+	"code": "propertyNotDefined",
 	"http": 400,
 	"propertyName": "someProperty",
 	"message": "The property named \"someProperty\" should be defined",
@@ -160,7 +152,7 @@ var errorCodes = errors.errorCodes;
 
 function handleDocument(err, document){
 	if(err){
-		if(err.name = errorCodes.fileNotFound){
+		if(err.code = errorCodes.fileNotFound){
  			return callback(errors.mySpecialError().innerError(err));
  		}
  		return callback(err);
