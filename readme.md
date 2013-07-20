@@ -5,6 +5,7 @@ who use function hoisting most of the time to avoid some of the so-called "callb
 
 [![Build Status](https://travis-ci.org/Muscula/nodeerrors.png)](https://travis-ci.org/Muscula/nodeerrors)
 [![NPM version](https://badge.fury.io/js/nodeerrors.png)](http://badge.fury.io/js/nodeerrors)
+[![Dependency Status](https://gemnasium.com/Muscula/nodeerrors.png)](https://gemnasium.com/Muscula/nodeerrors)
 
 Installation
 ------------
