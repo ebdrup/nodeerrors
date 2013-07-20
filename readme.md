@@ -3,6 +3,8 @@ nodeerrors
 This is a library for handling errors more efficiently in ```node.js```, especially made for people like me
 who use function hoisting most of the time to avoid some of the so-called "callback hell".
 
+[![Build Status](https://travis-ci.org/Muscula/nodeerrors.png)](https://travis-ci.org/Muscula/nodeerrors)
+
 Installation
 ------------
 ```
