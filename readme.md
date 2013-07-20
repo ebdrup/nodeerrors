@@ -41,7 +41,7 @@ module.exports = {
 
 with the file above, you will be able to use your own errors like this:
 ```js
-var errors = require("nodeerrors"); //I personally make this a global (once and for all)
+var errors = require("nodeerrors");
 
 callback(errors.notUnique("someProperty", "somePropertyValue")); //call callback with 'notUnique' error
 ```
@@ -53,7 +53,7 @@ Also these two parameters are automatically inserted into the error message wher
 
 You will also be able to do like this:
 ```js
-var errors = require("nodeerrors"); //I personally make this a global (once and for all)
+var errors = require("nodeerrors");
 
 callback(errors.propertyNotDefined("someProperty")); //call callback with 'propertyNotDefined' error
 ```
@@ -112,7 +112,7 @@ Adding extra internal values
 You can always add an extra parameter, when you create an error. So if we take the ```propertyNotDefined``` example
 from above, that took only one parameter, we can do this:
 ```js
-var errors = require("nodeerrors"); //I personally make this a global (once and for all)
+var errors = require("nodeerrors");
 
 callback(errors.propertyNotDefined(
 	"someProperty",
@@ -153,7 +153,7 @@ one kind of error you return. When you do this, you can save the original error 
 object (```Error.prototype``` has been extended). So you can do something like this:
 
 ```js
-var errors = require("nodeerrors"); //I personally put these two as globals (once and for all)
+var errors = require("nodeerrors");
 var errorCodes = errors.errorCodes;
 
 function handleDocument(err, document){
