@@ -1,42 +1,42 @@
 {
-	"author":"Allan Ebdrup",
-	"name":"nodeerrors",
-	"description":"error handling module for node",
-	"version":"2.0.4",
-	"repository":{
-		"type":"git",
-		"url":"https://github.com/Muscula/nodeerrors"
-	},
-	"private":false,
-	"main":"./lib/nodeerrors.js",
-	"engines":{
-		"node":">=0.6.20",
-		"npm":">=1.1.9"
-	},
-	"dependencies":{
-		"underscore":"",
-		"node-uuid":">=1.4.0",
-		"moduleconfig":""
-	},
-	"scripts":{
-		"test":"node test.js"
-	},
-	"devDependencies":{
-		"mocha":"",
-		"chai":"",
-		"sinon":"",
-		"sinon-chai":"",
-		"mocha-jshint":"",
-		"request":""
-	},
-	"readmeFilename":"readme.md",
-	"gitHead":"985c718ebf69fc91205c6c40d0a46ce49c717f2b",
-	"directories":{
-		"test":"test"
-	},
-	"keywords":[
-		"error",
-		"handling"
-	],
-	"license":"APACHE V2.0"
+  "author": "Allan Ebdrup",
+  "name": "nodeerrors",
+  "description": "error handling module for node",
+  "version": "2.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Muscula/nodeerrors"
+  },
+  "private": false,
+  "main": "./lib/nodeerrors.js",
+  "engines": {
+    "node": ">=0.6.20",
+    "npm": ">=1.1.9"
+  },
+  "dependencies": {
+    "underscore": "",
+    "node-uuid": ">=1.4.0",
+    "moduleconfig": ""
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "devDependencies": {
+    "mocha": "",
+    "chai": "",
+    "sinon": "",
+    "sinon-chai": "",
+    "mocha-jshint": "",
+    "request": ""
+  },
+  "readmeFilename": "readme.md",
+  "gitHead": "985c718ebf69fc91205c6c40d0a46ce49c717f2b",
+  "directories": {
+    "test": "test"
+  },
+  "keywords": [
+    "error",
+    "handling"
+  ],
+  "license": "APACHE V2.0"
 }
