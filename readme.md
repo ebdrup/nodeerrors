@@ -3,11 +3,11 @@ nodeerrors
 This is a library for handling errors more efficiently in ```node.js```, especially made for people like me
 who use function hoisting most of the time to avoid some of the so-called "callback hell".
 
-[![Build Status](https://travis-ci.org/Muscula/nodeerrors.png)](https://travis-ci.org/Muscula/nodeerrors)
+[![Build Status](https://travis-ci.org/ebdrup/nodeerrors.png)](https://travis-ci.org/ebdrup/nodeerrors)
 
 [![NPM version](https://badge.fury.io/js/nodeerrors.png)](http://badge.fury.io/js/nodeerrors)
 
-[![Dependency Status](https://gemnasium.com/Muscula/nodeerrors.png)](https://gemnasium.com/Muscula/nodeerrors)
+[![Dependency Status](https://gemnasium.com/ebdrup/nodeerrors.png)](https://gemnasium.com/ebdrup/nodeerrors)
 
 Installation
 ------------
