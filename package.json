@@ -18,15 +18,19 @@
     "moduleconfig": "1.1.0"
   },
   "scripts": {
-    "test": "node test.js"
+    "test": "istanbul cover _mocha",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "devDependencies": {
-    "mocha": "2.3.3",
     "chai": "3.3.0",
-    "sinon": "1.17.1",
-    "sinon-chai": "2.8.0",
+    "coveralls": "^2.11.4",
+    "istanbul": "0.4.0",
+    "mocha": "2.3.3",
     "mocha-jshint": "2.2.3",
-    "request": "2.64.0"
+    "mocha-lcov-reporter": "^1.0.0",
+    "request": "2.64.0",
+    "sinon": "1.17.1",
+    "sinon-chai": "2.8.0"
   },
   "readmeFilename": "readme.md",
   "gitHead": "985c718ebf69fc91205c6c40d0a46ce49c717f2b",
@@ -37,5 +41,5 @@
     "error",
     "handling"
   ],
-  "license": "APACHE V2.0"
+  "license": "MIT"
 }
