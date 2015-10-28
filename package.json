@@ -13,20 +13,20 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "underscore": "",
-    "node-uuid": ">=1.4.0",
-    "moduleconfig": ""
+    "underscore": "1.8.3",
+    "node-uuid": "1.4.3",
+    "moduleconfig": "1.1.0"
   },
   "scripts": {
     "test": "node test.js"
   },
   "devDependencies": {
-    "mocha": "",
-    "chai": "",
-    "sinon": "",
-    "sinon-chai": "",
-    "mocha-jshint": "",
-    "request": ""
+    "mocha": "2.3.3",
+    "chai": "3.3.0",
+    "sinon": "1.17.1",
+    "sinon-chai": "2.8.0",
+    "mocha-jshint": "2.2.3",
+    "request": "2.64.0"
   },
   "readmeFilename": "readme.md",
   "gitHead": "985c718ebf69fc91205c6c40d0a46ce49c717f2b",
