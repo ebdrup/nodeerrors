@@ -28,7 +28,7 @@
     "mocha": "2.3.3",
     "mocha-jshint": "2.2.3",
     "request": "2.64.0",
-    "sinon": "1.17.1",
+    "sinon": "1.17.3",
     "sinon-chai": "2.8.0"
   },
   "readmeFilename": "readme.md",
