@@ -22,7 +22,7 @@
     "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "devDependencies": {
-    "chai": "3.4.1",
+    "chai": "3.5.0",
     "coveralls": "2.11.4",
     "istanbul": "0.4.0",
     "mocha": "2.3.3",
