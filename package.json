@@ -13,23 +13,23 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "underscore": "1.8.3",
-    "node-uuid": "1.4.6",
-    "moduleconfig": "1.1.0"
+    "underscore": "^1.8.3",
+    "node-uuid": "^1.4.7",
+    "moduleconfig": "^2.0.0"
   },
   "scripts": {
     "test": "istanbul cover _mocha",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "devDependencies": {
-    "chai": "3.4.1",
-    "coveralls": "2.11.4",
-    "istanbul": "0.4.0",
-    "mocha": "2.3.3",
-    "mocha-jshint": "2.2.3",
-    "request": "2.64.0",
-    "sinon": "1.17.1",
-    "sinon-chai": "2.8.0"
+    "chai": "^3.5.0",
+    "coveralls": "^2.11.6",
+    "istanbul": "^0.4.2",
+    "mocha": "^2.4.5",
+    "mocha-jshint": "^2.3.1",
+    "request": "^2.69.0",
+    "sinon": "^1.17.3",
+    "sinon-chai": "^2.8.0"
   },
   "readmeFilename": "readme.md",
   "gitHead": "985c718ebf69fc91205c6c40d0a46ce49c717f2b",
