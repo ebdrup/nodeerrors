@@ -25,7 +25,7 @@
     "chai": "3.4.1",
     "coveralls": "2.11.4",
     "istanbul": "0.4.0",
-    "mocha": "2.3.3",
+    "mocha": "2.4.2",
     "mocha-jshint": "2.2.3",
     "request": "2.64.0",
     "sinon": "1.17.1",
