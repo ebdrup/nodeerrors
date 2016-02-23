@@ -2,3 +2,4 @@
 --reporter dot
 --ui bdd
 --recursive
+--timeout 4000
