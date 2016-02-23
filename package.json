@@ -32,7 +32,6 @@
     "sinon-chai": "^2.8.0"
   },
   "readmeFilename": "readme.md",
-  "gitHead": "985c718ebf69fc91205c6c40d0a46ce49c717f2b",
   "directories": {
     "test": "test"
   },
