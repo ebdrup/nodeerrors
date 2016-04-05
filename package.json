@@ -27,7 +27,7 @@
     "istanbul": "^0.4.2",
     "mocha": "^2.4.5",
     "mocha-jshint": "^2.3.1",
-    "request": "^2.69.0",
+    "request": "^2.70.0",
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0"
   },
