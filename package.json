@@ -13,9 +13,9 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
+    "moduleconfig": "^2.0.0",
     "underscore": "^1.8.3",
-    "node-uuid": "^1.4.7",
-    "moduleconfig": "^2.0.0"
+    "uuid": "^3.0.0"
   },
   "scripts": {
     "test": "istanbul cover _mocha",
