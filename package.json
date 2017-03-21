@@ -29,7 +29,7 @@
     "mocha-jshint": "^2.3.1",
     "request": "^2.69.0",
     "sinon": "^1.17.3",
-    "sinon-chai": "^2.8.0"
+    "sinon-chai": "^2.9.0"
   },
   "readmeFilename": "readme.md",
   "directories": {
