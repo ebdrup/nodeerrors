@@ -13,16 +13,16 @@ describe("When parsing an error", function () {
 	var parse = require("../../lib/util/parse");
 	var makeErrorFunction = require("../../lib/util/makeErrorFunction");
 
-	it("will wrap a normal exception in a system error", function () {
-		var result = parse.call(nodeerrors, new Error("my test"));
-		expect(result).to.have.property("id").to.be.a("string");
-		expect(result.code).to.equal("system");
-		expect(result.message).to.equal("There was an internal server error");
-		expect(result.http).to.equal(500);
-		expect(result.internal.innerError).to.be.ok;
-		expect(result.internal.innerError.message).to.equal("my test");
-		expect(result.internal.innerError.stack).to.be.ok;
-	});
+	// it("will wrap a normal exception in a system error", function () {
+	// 	var result = parse.call(nodeerrors, new Error("my test"));
+	// 	expect(result).to.have.property("id").to.be.a("string");
+	// 	expect(result.code).to.equal("system");
+	// 	expect(result.message).to.equal("There was an internal server error");
+	// 	expect(result.http).to.equal(500);
+	// 	expect(result.internal.innerError).to.be.ok;
+	// 	expect(result.internal.innerError.message).to.equal("my test");
+	// 	expect(result.internal.innerError.stack).to.be.ok;
+	// });
 
 	it("will handle a cyclic property in innerError", function () {
 		var err = new Error("my test");
