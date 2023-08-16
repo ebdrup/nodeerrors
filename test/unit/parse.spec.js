@@ -9,7 +9,7 @@ function getCyclicObject() {
 
 describe("When parsing an error", function () {
 
-	var nodeerrors = require("../../lib/nodeerrors.js");
+	var nodeerrors = require("../../lib/nodeerrors.js")();
 	var parse = require("../../lib/util/parse");
 	var makeErrorFunction = require("../../lib/util/makeErrorFunction");
 

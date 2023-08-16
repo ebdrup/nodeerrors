@@ -2,13 +2,13 @@
 describe("nodeerrors", function () {
 
 	it("is required without throwing an error", function () {
-		var nodeerrors = require("../../lib/nodeerrors.js");
+		var nodeerrors = require("../../lib/nodeerrors.js")();
 		expect(nodeerrors).to.be.ok;
 	});
 
 
 	it("should have the errors and errorCodes defined in .errors.js configuration", function () {
-		var nodeerrors = require("../../lib/nodeerrors.js");
+		var nodeerrors = require("../../lib/nodeerrors.js")();
 		expect(nodeerrors.system).to.be.a("function");
 		expect(nodeerrors.notUnique).to.be.a("function");
 		expect(nodeerrors.propertyNotDefined).to.be.a("function");

@@ -1,6 +1,6 @@
 "use strict";
 describe("specifying onError", function () {
-	require("../../lib/nodeerrors");
+	require("../../lib/nodeerrors")();
 	it("calls the callback if there is no error", function () {
 		var data = {mytest:true};
 		function myFunction(callback){

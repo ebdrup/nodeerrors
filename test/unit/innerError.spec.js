@@ -1,6 +1,6 @@
 "use strict";
 describe("specifying an innerError", function () {
-	require("../../lib/nodeerrors");
+	require("../../lib/nodeerrors")();
 
 	it("will return the same Error", function () {
 		var outerError = new Error("outer");
