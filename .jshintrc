@@ -1,4 +1,5 @@
 {
+	"esversion": 6,
 	"asi" : false,
 	"bitwise" : true,
 	"boss" : false,

@@ -1,0 +1,5 @@
+require:
+  - ./test/common.js
+ui: bdd
+recursive: true
+timeout: 4000
